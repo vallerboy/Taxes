@@ -9,10 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller implements Initializable {
 
@@ -28,7 +25,7 @@ public class Controller implements Initializable {
     @FXML
     TextField textfieldNewSentence;
 
-    List<String> listOfSentence = Arrays.asList("Dzień jak codzień", "Uśmiech to podstawa", "Pieniądze szczęścia nie dają", "Swiat jest piękny");
+    List<String> listOfSentence = new ArrayList<>(Arrays.asList("Dzień jak codzień", "Uśmiech to podstawa", "Pieniądze szczęścia nie dają", "Swiat jest piękny"));
     Random random = new Random();
 
 
@@ -41,6 +38,14 @@ public class Controller implements Initializable {
             }
         });
 
-        
+
+        buttonAddNewSentence.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                listOfSentence.add(
+                        textfieldNewSentence.getText());
+                textfieldNewSentence.clear();
+            }
+        });
     }
 }
